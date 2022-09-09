@@ -41,7 +41,7 @@ While the script does *not* require root privileges, you will need sudo/root acc
 
 ### Installation
 
-I recommend putting this script in your */usr/local/bin* directory or somewhere else in your path so it's easy to run.
+I recommend putting this script in the */opt/* directory, as it'll be run by the systemd service.
 
 1. Copy the script file to your desired path and rename if you want.
 

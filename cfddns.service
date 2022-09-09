@@ -1,11 +1,13 @@
 [Unit]
 Description=Run script to update CloudFlare DNS
-After=network.target
+Wants=network-online.target
+After=syslog.target network.target nss-lookup.target network-online.target
 
 [Service]
 Type=oneshot
-ExecStart=/usr/local/bin/cfddns.sh -c /path/to/account.details -r server.domain.tld -l /var/log/cfddns.log
-ExecStart=/usr/local/bin/cfddns.sh -6 -c /path/to/account.details -r server.domain.tld -l /var/log/cfddns.log
+Environment="CF_DOMAIN=your.domain.tld"
+ExecStart=/opt/CloudflareDDNS/aws_ddns.sh
+WorkingDirectory=/opt/CloudflareDDNS
 
 [Install]
 WantedBy=multi-user.target
